@@ -1,20 +1,22 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Toast from './Toast';
 
 const TOAST_DOM_ID = 'toast';
 
 export default function ToastContainer() {
+  const [toastRoot, setToastRoot] = useState<HTMLElement | null>(null);
+
   useEffect(() => {
-    let toastRoot = document.getElementById(TOAST_DOM_ID);
-    if (!toastRoot) {
-      toastRoot = document.createElement('div');
-      toastRoot.id = TOAST_DOM_ID;
-      document.body.appendChild(toastRoot);
+    let root = document.getElementById(TOAST_DOM_ID);
+    if (!root) {
+      root = document.createElement('div');
+      root.id = TOAST_DOM_ID;
+      document.body.appendChild(root);
     }
+    setToastRoot(root);
   }, []);
 
-  const toastRoot = document.getElementById(TOAST_DOM_ID);
   if (!toastRoot) return null;
 
   return createPortal(<Toast />, toastRoot);
