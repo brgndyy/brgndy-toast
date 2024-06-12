@@ -1,6 +1,6 @@
 {
   "name": "brgndy-toast",
-  "version": "0.0.6",
+  "version": "1.0.1",
   "type": "module",
   "description": "toast-library-component",
   "types": "dist/index.d.ts",
